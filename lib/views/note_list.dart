@@ -46,12 +46,12 @@ class _NoteListState extends State<NoteList> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => NoteModify()));
+                .push(MaterialPageRoute(builder: (_) => NoteModify()));
           },
           child: Icon(Icons.add),
         ),
         body: Builder(
-          builder: (context) {
+          builder: (_) {
             if (_isLoading) {
               return Center(child: CircularProgressIndicator());
             }
@@ -63,7 +63,7 @@ class _NoteListState extends State<NoteList> {
             return ListView.separated(
               separatorBuilder: (_, __) =>
                   Divider(height: 1, color: Colors.green),
-              itemBuilder: (context, index) {
+              itemBuilder: (_, index) {
                 return Dismissible(
                   key: ValueKey(_apiResponse.data[index].noteID),
                   direction: DismissDirection.startToEnd,
